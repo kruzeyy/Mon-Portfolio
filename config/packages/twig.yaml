@@ -5,3 +5,9 @@ twig:
         site_email: 'pontus.maxime@yahoo.com'
         site_linkedin: 'https://www.linkedin.com/in/maxime-pontus-99887b1b3/'
         site_github: 'https://github.com/kruzeyy'
+        # Activité freelance — à personnaliser
+        business_region: 'Lyon et Auvergne-Rhône-Alpes'
+        business_statut: 'Auto-entrepreneur'
+        # Mentions légales (obligatoire : compléter quand tu les as)
+        legal_siret: ''
+        legal_address: ''

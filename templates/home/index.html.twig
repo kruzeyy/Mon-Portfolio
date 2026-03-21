@@ -1,5 +1,8 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}{{ site_name }} — sites vitrines & développement web · {{ business_region }}{% endblock %}
+{% block meta_description %}Création de sites vitrines pour indépendants, artisans et TPE en {{ business_region }}. {{ business_statut }} — devis clair, mobile & SEO de base. Contact : {{ site_email }}.{% endblock %}
+
 {% block body %}
     <a class="skip-link" href="#accueil">Aller au contenu</a>
 
@@ -8,7 +11,7 @@
             <div class="brand">
                 <a href="#accueil" class="brand-link" data-scroll>{{ site_name }}</a>
                 <p class="brand-tagline">
-                    M1 dev full stack · Ynov Campus · Alternance
+                    Sites vitrines &amp; présence web · {{ business_statut }} · {{ business_region }}
                 </p>
             </div>
             <button
@@ -24,8 +27,11 @@
             <nav class="site-nav" id="site-nav" aria-label="Navigation principale">
                 <ul class="nav-list">
                     <li><a href="#accueil" data-scroll>Accueil</a></li>
-                    <li><a href="#projets" data-scroll>Projets</a></li>
+                    <li><a href="#prestations" data-scroll>Services</a></li>
+                    <li><a href="#demarche" data-scroll>Démarche</a></li>
+                    <li><a href="#projets" data-scroll>Réalisations</a></li>
                     <li><a href="#a-propos" data-scroll>À propos</a></li>
+                    <li><a href="#faq" data-scroll>FAQ</a></li>
                     <li><a href="#contact" data-scroll>Contact</a></li>
                 </ul>
             </nav>
@@ -34,7 +40,6 @@
 
     <main>
         <section class="hero hero--media" id="accueil" aria-labelledby="hero-title">
-            {# Vidéo hero : Mixkit — « Software developer working on code, screen close up » (mixkit.co, usage gratuit) #}
             <video
                 class="hero-video"
                 autoplay
@@ -46,38 +51,121 @@
                 <source src="{{ asset('videos/hero-demo.mp4') }}" type="video/mp4" />
             </video>
             <div class="hero-overlay" aria-hidden="true"></div>
-            <div class="container hero-content">
-                <p class="hero-eyebrow">Portfolio</p>
+            <div class="container hero-content hero-content--wide">
+                <p class="hero-eyebrow">Sites vitrines pour pros</p>
                 <h1 id="hero-title" class="hero-title">
-                    Bonjour, je suis {{ site_name }}.
+                    J’accompagne les indépendants et les TPE pour une présence web claire et crédible.
                 </h1>
                 <div class="hero-intro">
                     <p class="hero-subtitle">
-                        J’ai <strong>21 ans</strong> et je suis en <strong>M1 dev full stack</strong> chez
-                        <strong>Ynov Campus</strong>, en <strong>alternance</strong>. Ce rythme me permet d’associer
-                        les apports du cursus à la réalité d’une équipe : monter en compétence sur tout le spectre
-                        du web, du front aux API et à la mise en production.
+                        <strong>{{ business_statut }}</strong> — je conçois des sites vitrines adaptés aux artisans,
+                        libéraux et petites structures en <strong>{{ business_region }}</strong> : mise en avant de
+                        vos services, prise de contact simple, affichage impeccable sur mobile. Chaque projet démarre
+                        par un <strong>devis détaillé</strong>, sans engagement avant validation de votre part.
                     </p>
-                    <p class="hero-subtitle">
-                        Curieux et rigoureux, j’aime comprendre un besoin, proposer une solution claire et la traduire
-                        en code maintenable — avec une attention particulière à l’expérience utilisateur. Sur ce site,
-                        tu trouveras un aperçu de mes réalisations : application iOS, projets React, jeu en navigateur
-                        et plateforme full stack, entre projets de cours et travaux personnels.
+                    <p class="hero-subtitle hero-subtitle--muted">
+                        Parallèlement, je poursuis un <strong>M1 développement full stack</strong> à Ynov Campus en
+                        <strong>alternance</strong>, ce qui me permet de maîtriser des outils modernes et maintenables
+                        — la même rigueur pour vos projets clients que pour mes réalisations techniques.
                     </p>
                 </div>
                 <div class="hero-actions">
-                    <a href="#projets" class="btn btn-primary" data-scroll>Voir mes projets</a>
-                    <a href="#contact" class="btn btn-ghost" data-scroll>Me contacter</a>
+                    <a href="#prestations" class="btn btn-primary" data-scroll>Découvrir l’offre</a>
+                    <a href="#contact" class="btn btn-ghost" data-scroll>Demander un devis</a>
                 </div>
             </div>
         </section>
 
-        <section class="section projects" id="projets" aria-labelledby="projets-title">
+        <section class="section section--tight trust-strip" aria-label="Engagements">
+            <div class="container trust-strip-inner">
+                {% for point in trust_points %}
+                    <div class="trust-item">
+                        <span class="trust-icon" aria-hidden="true"><i class="{{ point.icon }}"></i></span>
+                        <div class="trust-text">
+                            <strong class="trust-title">{{ point.title }}</strong>
+                            <span class="trust-desc">{{ point.text }}</span>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <section class="section section-flagship" id="prestations" aria-labelledby="prestations-title">
+            <div class="container container-flagship">
+                <header class="flagship-header">
+                    <h2 id="prestations-title" class="flagship-title">Mon Offre Phare : Le Site Vitrine Clé en Main</h2>
+                    <p class="flagship-lead">
+                        Une présence web sobre et efficace pour les artisans qui veulent être pris au sérieux : tout est
+                        pensé pour convertir les visites en appels et demandes de devis, sans jargon inutile.
+                    </p>
+                </header>
+
+                <div class="flagship-price-block">
+                    <p class="flagship-price-label">Investissement</p>
+                    <p class="flagship-price-amount">
+                        <span class="flagship-price-value">900</span>&nbsp;€&nbsp;<abbr title="Hors taxes" class="flagship-price-ht">HT</abbr>
+                    </p>
+                    <p class="flagship-price-terms">50&nbsp;% à l’acompte · 50&nbsp;% à la mise en ligne</p>
+                </div>
+
+                <div class="flagship-pillars" role="list">
+                    {% for pillar in flagship_pillars %}
+                        <article class="flagship-pillar" role="listitem">
+                            <div class="flagship-pillar-icon" aria-hidden="true">
+                                <i class="{{ pillar.icon }}"></i>
+                            </div>
+                            <div class="flagship-pillar-body">
+                                <h3 class="flagship-pillar-title">{{ pillar.title }}</h3>
+                                {% if pillar.subtitle %}
+                                    <p class="flagship-pillar-subtitle">{{ pillar.subtitle }}</p>
+                                {% endif %}
+                                <ul class="flagship-pillar-list">
+                                    {% for line in pillar.items %}
+                                        <li>{{ line }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </article>
+                    {% endfor %}
+                </div>
+
+                <div class="flagship-cta-row">
+                    <a href="#contact" class="btn btn-flagship-cta" data-scroll>Demander un devis</a>
+                </div>
+
+                <p class="flagship-footnote">
+                    Cible : artisans (électriciens, plombiers, maçons) et TPE.
+                </p>
+            </div>
+        </section>
+
+        <section class="section" id="demarche" aria-labelledby="demarche-title">
             <div class="container">
                 <header class="section-header">
-                    <h2 id="projets-title" class="section-title">Projets</h2>
+                    <h2 id="demarche-title" class="section-title">Comment on travaille ensemble</h2>
                     <p class="section-lead">
-                        Applications mobile &amp; web, jeu en navigateur et plateforme d’alertes — dont <strong>deux projets de cours</strong> (TimeTravel Agency, Lyon Alerte 360) et des réalisations personnelles.
+                        Un processus simple, pensé pour les pros qui n’ont pas le temps de jargon technique.
+                    </p>
+                </header>
+                <ol class="process-grid">
+                    {% for row in process_steps %}
+                        <li class="process-step">
+                            <span class="process-num" aria-hidden="true">{{ row.step }}</span>
+                            <h3 class="process-title">{{ row.title }}</h3>
+                            <p class="process-text">{{ row.text }}</p>
+                        </li>
+                    {% endfor %}
+                </ol>
+            </div>
+        </section>
+
+        <section class="section section--alt" id="projets" aria-labelledby="projets-title">
+            <div class="container">
+                <header class="section-header">
+                    <h2 id="projets-title" class="section-title">Réalisations &amp; travaux d’école</h2>
+                    <p class="section-lead section-lead--wide">
+                        Aperçu de projets techniques : application mobile, interfaces web, jeu navigateur et plateforme
+                        full stack — autant de preuves de méthode et de qualité de code pour vos futurs développements.
                     </p>
                 </header>
                 <div class="project-grid">
@@ -106,7 +194,7 @@
             </div>
         </section>
 
-        <section class="section about" id="a-propos" aria-labelledby="about-title">
+        <section class="section" id="a-propos" aria-labelledby="about-title">
             <div class="container about-grid">
                 <div class="about-visual">
                     <div class="about-frame">
@@ -125,14 +213,19 @@
                         <h2 id="about-title" class="section-title">À propos</h2>
                     </header>
                     <p class="about-text">
-                        J’ai 21 ans et je poursuis un <strong>M1 développement full stack</strong> à Ynov Campus en
-                        alternance. Autodidacte curieux avant de structurer mon parcours en école, je construis
-                        aujourd’hui des sites et des applications en accord avec les bonnes pratiques : UX soignée,
-                        code lisible et envie constante d’apprendre. Ce qui me motive, c’est de faire passer une idée
-                        du cahier des charges à un produit concret, fiable et agréable à utiliser.
+                        Je m’appelle <strong>{{ site_name }}</strong>, j’ai 21 ans. En <strong>auto-entrepreneur</strong>,
+                        j’aide les petites structures à obtenir un site professionnel sans prise de tête : contenus structurés,
+                        apparence soignée, et base technique saine pour évoluer. En parallèle, je renforce mes compétences
+                        en <strong>M1 développement full stack</strong> à Ynov Campus, en <strong>alternance</strong>.
                     </p>
-                    <h3 class="skills-heading">Compétences clés</h3>
-                    <ul class="skill-tags" aria-label="Technologies et domaines">
+                    <h3 class="skills-heading">Ce que je propose aux clients</h3>
+                    <ul class="client-offer-list">
+                        {% for line in client_skills %}
+                            <li>{{ line }}</li>
+                        {% endfor %}
+                    </ul>
+                    <h3 class="skills-heading">Stack &amp; outils</h3>
+                    <ul class="skill-tags" aria-label="Technologies">
                         {% for skill in skills %}
                             <li>
                                 <i class="{{ skill.icon }}" aria-hidden="true"></i> {{ skill.label }}
@@ -143,13 +236,32 @@
             </div>
         </section>
 
+        <section class="section section--alt" id="faq" aria-labelledby="faq-title">
+            <div class="container container--narrow">
+                <header class="section-header">
+                    <h2 id="faq-title" class="section-title">Questions fréquentes</h2>
+                    <p class="section-lead">Réponses courtes ; le détail se discute au devis.</p>
+                </header>
+                <div class="faq-list">
+                    {% for item in faqs %}
+                        <details class="faq-item">
+                            <summary class="faq-summary">{{ item.q }}</summary>
+                            <div class="faq-answer">
+                                <p>{{ item.a }}</p>
+                            </div>
+                        </details>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+
         <section class="section contact" id="contact" aria-labelledby="contact-title">
             <div class="container contact-layout">
                 <header class="section-header section-header--left">
-                    <h2 id="contact-title" class="section-title">Contact</h2>
+                    <h2 id="contact-title" class="section-title">Contact &amp; devis</h2>
                     <p class="section-lead contact-encouragement">
-                        Un projet, une question ou une simple prise de contact ? Écrivez-moi :
-                        j’essaie de répondre sous quelques jours ouvrés.
+                        Décrivez votre activité, votre secteur et ce que vous souhaitez obtenir : je reviens vers vous
+                        avec des questions ciblées ou une proposition structurée.
                     </p>
                 </header>
 
@@ -181,6 +293,7 @@
                                 <a href="{{ site_linkedin }}" target="_blank" rel="noopener noreferrer">Profil LinkedIn</a>
                             </li>
                         </ul>
+                        <p class="contact-aside-note">{{ business_statut }} · {{ business_region }}</p>
                     </aside>
                 </div>
             </div>
@@ -189,9 +302,14 @@
 
     <footer class="site-footer">
         <div class="container footer-inner">
-            <p class="footer-copy">
-                © {{ 'now'|date('Y') }} {{ site_name }}. Tous droits réservés.
-            </p>
+            <div class="footer-meta">
+                <p class="footer-copy">
+                    © {{ 'now'|date('Y') }} {{ site_name }} — {{ business_statut }}.
+                </p>
+                <p class="footer-legal-links">
+                    <a href="{{ path('app_mentions_legales') }}">Mentions légales</a>
+                </p>
+            </div>
             <ul class="footer-social" aria-label="Réseaux sociaux">
                 <li>
                     <a href="{{ site_github }}" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>

@@ -1,0 +1,88 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mentions légales — {{ site_name }}{% endblock %}
+{% block meta_description %}Mentions légales du site {{ site_name }} — éditeur, hébergement, propriété intellectuelle et données personnelles.{% endblock %}
+
+{% block body %}
+    <a class="skip-link" href="#mentions-main">Aller au contenu</a>
+
+    <header class="site-header site-header--simple">
+        <div class="container header-inner">
+            <div class="brand">
+                <a href="{{ path('app_home') }}" class="brand-link">{{ site_name }}</a>
+                <p class="brand-tagline">Retour au site</p>
+            </div>
+            <nav class="site-nav site-nav--simple" aria-label="Navigation">
+                <ul class="nav-list">
+                    <li><a href="{{ path('app_home') }}">Accueil</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="legal-page" id="mentions-main">
+        <div class="container container--legal">
+            <h1 class="legal-title">Mentions légales</h1>
+            <p class="legal-updated">Dernière mise à jour : {{ 'now'|date('d/m/Y') }}</p>
+
+            <section class="legal-block" aria-labelledby="legal-editeur">
+                <h2 id="legal-editeur">Éditeur du site</h2>
+                <p>
+                    <strong>{{ site_name }}</strong> — {{ business_statut }}.
+                </p>
+                {% if legal_siret %}
+                    <p>SIRET : {{ legal_siret }}</p>
+                {% else %}
+                    <p class="legal-note">
+                        Numéro SIRET : communiqué sur les devis et factures, ou sur simple demande à
+                        <a href="mailto:{{ site_email }}">{{ site_email }}</a>.
+                    </p>
+                {% endif %}
+                {% if legal_address %}
+                    <p>Adresse : {{ legal_address }}</p>
+                {% endif %}
+                <p>
+                    Contact : <a href="mailto:{{ site_email }}">{{ site_email }}</a>
+                </p>
+            </section>
+
+            <section class="legal-block" aria-labelledby="legal-hebergement">
+                <h2 id="legal-hebergement">Hébergement</h2>
+                <p>
+                    Ce site est hébergé par <strong>Render, Inc.</strong> (États-Unis). Informations détaillées :
+                    <a href="https://render.com/legal/privacy" rel="noopener noreferrer">Politique de confidentialité Render</a>.
+                </p>
+            </section>
+
+            <section class="legal-block" aria-labelledby="legal-propriete">
+                <h2 id="legal-propriete">Propriété intellectuelle</h2>
+                <p>
+                    L’ensemble des contenus présents sur ce site (textes, visuels, structure) est protégé. Toute
+                    reproduction non autorisée est interdite sauf accord écrit.
+                </p>
+            </section>
+
+            <section class="legal-block" aria-labelledby="legal-donnees">
+                <h2 id="legal-donnees">Données personnelles</h2>
+                <p>
+                    Le formulaire de contact collecte les données nécessaires pour répondre à votre message (nom,
+                    adresse e-mail, contenu du message). Elles ne sont pas revendues ; elles sont traitées dans le
+                    cadre de la relation commerciale ou précontractuelle.
+                </p>
+                <p>
+                    Pour exercer vos droits (accès, rectification, suppression, etc.), écrivez à
+                    <a href="mailto:{{ site_email }}">{{ site_email }}</a>. Réclamation auprès de la CNIL possible sur
+                    <a href="https://www.cnil.fr" rel="noopener noreferrer">cnil.fr</a>.
+                </p>
+            </section>
+
+            <p class="legal-back"><a href="{{ path('app_home') }}" class="btn btn-small btn-primary">← Retour à l’accueil</a></p>
+        </div>
+    </main>
+
+    <footer class="site-footer site-footer--minimal">
+        <div class="container footer-inner">
+            <p class="footer-copy">© {{ 'now'|date('Y') }} {{ site_name }}</p>
+        </div>
+    </footer>
+{% endblock %}
