@@ -1,0 +1,4 @@
+framework:
+    mailer:
+        # IDENTIFIANT = email SMTP Brevo ; MOT_DE_PASSE = clé xsmtpsib-… (encodés pour les caractères spéciaux)
+        dsn: 'smtp://%env(urlencode:IDENTIFIANT_SMTP_BREVO)%:%env(urlencode:MOT_DE_PASSE_SMTP)%@smtp-relay.brevo.com:587'

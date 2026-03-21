@@ -156,6 +156,9 @@
                 {% for message in app.flashes('success') %}
                     <div class="flash flash--success" role="status">{{ message }}</div>
                 {% endfor %}
+                {% for message in app.flashes('error') %}
+                    <div class="flash flash--error" role="alert">{{ message }}</div>
+                {% endfor %}
 
                 <div class="contact-grid">
                     <div class="contact-form-wrap">

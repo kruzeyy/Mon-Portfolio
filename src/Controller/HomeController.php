@@ -4,12 +4,25 @@ namespace App\Controller;
 
 use App\Form\ContactFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Attribute\Route;
 
 class HomeController extends AbstractController
 {
+    public function __construct(
+        private readonly MailerInterface $mailer,
+        #[Autowire('%env(MAILER_FROM)%')]
+        private readonly string $mailerFrom,
+        #[Autowire('%env(CONTACT_TO)%')]
+        private readonly string $contactTo,
+    ) {
+    }
+
     #[Route('/', name: 'app_home', methods: ['GET', 'POST'])]
     public function __invoke(Request $request): Response
     {
@@ -17,10 +30,33 @@ class HomeController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->addFlash(
-                'success',
-                'Merci ! Votre message a bien été pris en compte (démo Symfony — branchez un mailer pour un envoi réel).'
-            );
+            /** @var array{name: string, email: string, message: string} $data */
+            $data = $form->getData();
+
+            $email = (new Email())
+                ->from($this->mailerFrom)
+                ->to($this->contactTo)
+                ->replyTo($data['email'])
+                ->subject(sprintf('[Portfolio] Message de %s', $data['name']))
+                ->text(sprintf(
+                    "Nom : %s\nEmail : %s\n\n%s",
+                    $data['name'],
+                    $data['email'],
+                    $data['message']
+                ));
+
+            try {
+                $this->mailer->send($email);
+                $this->addFlash(
+                    'success',
+                    'Merci ! Votre message a bien été envoyé. Je vous répondrai dès que possible.'
+                );
+            } catch (TransportExceptionInterface) {
+                $this->addFlash(
+                    'error',
+                    'L’envoi du message a échoué. Réessayez plus tard ou écrivez-moi directement à l’adresse indiquée dans le pied de page.'
+                );
+            }
 
             return $this->redirect($this->generateUrl('app_home').'#contact');
         }

@@ -684,6 +684,12 @@ a:hover {
   color: #166534;
 }
 
+.flash--error {
+  background: rgba(239, 68, 68, 0.1);
+  border-color: rgba(239, 68, 68, 0.35);
+  color: #991b1b;
+}
+
 .contact-grid {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
