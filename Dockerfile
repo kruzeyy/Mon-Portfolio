@@ -24,8 +24,8 @@ ENV APP_DEBUG=0
 ENV APP_SECRET=set-me-on-render
 
 RUN mkdir -p var/cache var/log \
-    && chown -R www-data:www-data var \
-    && php bin/console cache:warmup --env=prod --no-debug
+    && php bin/console cache:warmup --env=prod --no-debug \
+    && chown -R www-data:www-data var
 
 EXPOSE 80
 CMD ["apache2-foreground"]
