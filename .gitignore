@@ -1,0 +1,7 @@
+node_modules/
+/vendor/
+/var/
+.php-version
+.phpunit.result.cache
+.env.local
+.env.*.local

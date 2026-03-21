@@ -1,0 +1,215 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MyHealthDay — {{ site_name }}{% endblock %}
+
+{% block body %}
+    <div class="project-page">
+        <a class="skip-link" href="#contenu-principal">Aller au contenu</a>
+
+        <header class="site-header" id="top">
+            <div class="container header-inner">
+                <div class="brand">
+                    <a href="{{ path('app_home') }}#accueil" class="brand-link">{{ site_name }}</a>
+                    <p class="brand-tagline">
+                        M1 dev full stack · Ynov Campus · Alternance
+                    </p>
+                </div>
+                <button
+                    type="button"
+                    class="nav-toggle"
+                    aria-expanded="false"
+                    aria-controls="site-nav"
+                    aria-label="Ouvrir le menu"
+                >
+                    <span class="nav-toggle-bar"></span>
+                    <span class="nav-toggle-bar"></span>
+                </button>
+                <nav class="site-nav" id="site-nav" aria-label="Navigation principale">
+                    <ul class="nav-list">
+                        <li><a href="{{ path('app_home') }}#accueil">Accueil</a></li>
+                        <li><a href="{{ path('app_home') }}#projets">Projets</a></li>
+                        <li><a href="{{ path('app_home') }}#a-propos">À propos</a></li>
+                        <li><a href="{{ path('app_home') }}#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main id="contenu-principal" class="container section" style="padding-top: 2rem;">
+            <p class="project-breadcrumb">
+                <a href="{{ path('app_home') }}">Accueil</a>
+                · <a href="{{ path('app_home') }}#projets">Projets</a>
+                · MyHealthDay
+            </p>
+
+            <header class="project-detail-hero">
+                <div class="project-detail-hero-visual">
+                    <img
+                        src="{{ asset('images/myhealthday-icon.png') }}"
+                        alt="Logo de l’application MyHealthDay"
+                        width="512"
+                        height="512"
+                        loading="eager"
+                    />
+                </div>
+                <p class="project-detail-tag">Application iOS</p>
+                <h1>MyHealthDay</h1>
+                <p class="project-detail-lead">
+                    Application iOS complète pour gérer vos tâches quotidiennes, suivre votre santé
+                    (HealthKit) et découvrir des recettes orientées perte de poids.
+                </p>
+                <p style="margin-top: 1.25rem;">
+                    <a href="{{ path('app_home') }}#projets" class="btn btn-ghost">← Retour aux projets</a>
+                </p>
+            </header>
+
+            <section class="project-detail-section" aria-labelledby="features-title">
+                <h2 id="features-title">Fonctionnalités</h2>
+                <div class="project-feature-grid">
+                    <article class="project-feature-card">
+                        <h3><span class="emoji" aria-hidden="true">✅</span> Gestion des tâches quotidiennes</h3>
+                        <ul>
+                            <li>Créer, modifier et supprimer des tâches</li>
+                            <li>Marquer les tâches comme complétées</li>
+                            <li>Priorités : faible, moyenne, élevée</li>
+                            <li>Suivi de progression avec barre de progression</li>
+                            <li>Persistance des données (local)</li>
+                        </ul>
+                    </article>
+                    <article class="project-feature-card">
+                        <h3><span class="emoji" aria-hidden="true">❤️</span> Suivi de santé (HealthKit)</h3>
+                        <ul>
+                            <li>Nombre de pas quotidiens</li>
+                            <li>Poids actuel</li>
+                            <li>Graphique des pas sur 7 jours</li>
+                            <li>Actualisation par glissement vers le bas</li>
+                        </ul>
+                    </article>
+                    <article class="project-feature-card">
+                        <h3><span class="emoji" aria-hidden="true">🍽️</span> Recettes de cuisine</h3>
+                        <ul>
+                            <li>Recettes pour perdre du poids</li>
+                            <li>Filtres : petit-déjeuner, déjeuner, dîner, collation</li>
+                            <li>Détails : ingrédients, instructions, calories, durée</li>
+                            <li>6 recettes préchargées</li>
+                        </ul>
+                    </article>
+                </div>
+            </section>
+
+            <section class="project-detail-section" aria-labelledby="install-title">
+                <h2 id="install-title">Installation</h2>
+                <h3>Prérequis</h3>
+                <ul>
+                    <li>macOS avec Xcode 14.0 ou supérieur</li>
+                    <li>iOS 16.0 ou supérieur sur l’appareil cible</li>
+                    <li>iPhone avec HealthKit disponible (données réelles)</li>
+                </ul>
+                <h3>Étapes</h3>
+                <ol>
+                    <li>
+                        <strong>Ouvrir le projet dans Xcode</strong> — depuis le dossier du projet :
+                        <div class="detail-code"><pre>cd /Users/maxime/MyHealthDay
+open MyHealthDay.xcodeproj</pre></div>
+                    </li>
+                    <li>
+                        <strong>Configurer l’application</strong> — équipe de développement dans les réglages du projet,
+                        identifiant d’application unique (Bundle ID), appareil cible sélectionné.
+                    </li>
+                    <li>
+                        <strong>Activer HealthKit</strong> — dans les <em>Capabilities</em> du projet, activer HealthKit.
+                        Les descriptions d’usage sont déjà renseignées dans <code>Info.plist</code>.
+                    </li>
+                    <li>
+                        <strong>Compiler et exécuter</strong> — simulateur iPhone ou appareil connecté, puis
+                        <kbd>Cmd</kbd> + <kbd>R</kbd>.
+                    </li>
+                </ol>
+            </section>
+
+            <section class="project-detail-section" aria-labelledby="structure-title">
+                <h2 id="structure-title">Structure du projet</h2>
+                <div class="detail-code">
+                    <pre>MyHealthDay/
+├── MyHealthDay/
+│   ├── MyHealthDayApp.swift          # Point d’entrée
+│   ├── Models/
+│   │   ├── TodoItem.swift
+│   │   ├── TodoManager.swift
+│   │   ├── HealthManager.swift
+│   │   └── Recipe.swift
+│   ├── Views/
+│   │   ├── MainTabView.swift
+│   │   ├── TodoView.swift
+│   │   ├── HealthView.swift
+│   │   └── RecipesView.swift
+│   ├── Assets.xcassets/
+│   └── Info.plist
+└── README.md</pre>
+                </div>
+            </section>
+
+            <section class="project-detail-section" aria-labelledby="auth-title">
+                <h2 id="auth-title">Autorisations</h2>
+                <p>L’app demande l’accès HealthKit pour :</p>
+                <ul>
+                    <li>Lire le nombre de pas</li>
+                    <li>Lire le poids corporel</li>
+                    <li>Lire la distance parcourue</li>
+                </ul>
+                <p>Les autorisations sont demandées au premier lancement.</p>
+            </section>
+
+            <section class="project-detail-section" aria-labelledby="tech-title">
+                <h2 id="tech-title">Technologies utilisées</h2>
+                <ul class="tech-chips">
+                    <li>SwiftUI</li>
+                    <li>HealthKit</li>
+                    <li>UserDefaults</li>
+                    <li>Combine</li>
+                </ul>
+            </section>
+
+            <section class="project-detail-section" aria-labelledby="custom-title">
+                <h2 id="custom-title">Personnalisation</h2>
+                <p>
+                    <strong>Recettes :</strong> modifier <code>loadDefaultRecipes()</code> dans <code>RecipeManager</code>
+                    pour en ajouter.
+                </p>
+                <p>
+                    <strong>Statistiques santé :</strong> étendre <code>HealthManager.swift</code> pour d’autres types
+                    HealthKit (fréquence cardiaque, calories brûlées, etc.).
+                </p>
+            </section>
+
+            <div class="project-detail-notes" role="note">
+                <strong>Notes</strong>
+                <ul>
+                    <li>Les données de santé nécessitent le consentement explicite de l’utilisateur.</li>
+                    <li>Les tâches sont stockées localement sur l’appareil.</li>
+                    <li>iOS 16.0 minimum pour les fonctionnalités SwiftUI utilisées.</li>
+                </ul>
+            </div>
+
+            <p style="margin-top: 2.5rem; color: var(--color-text-muted); font-size: 0.9375rem;">
+                Créée avec ❤️ pour accompagner des objectifs de santé au quotidien.
+            </p>
+        </main>
+
+        <footer class="site-footer">
+            <div class="container footer-inner">
+                <p class="footer-copy">
+                    © {{ 'now'|date('Y') }} {{ site_name }}. Tous droits réservés.
+                </p>
+                <ul class="footer-social" aria-label="Réseaux sociaux">
+                    <li>
+                        <a href="{{ site_github }}" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
+                    </li>
+                    <li>
+                        <a href="{{ site_linkedin }}" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </footer>
+    </div>
+{% endblock %}

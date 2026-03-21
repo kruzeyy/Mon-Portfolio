@@ -1,0 +1,12 @@
+{
+  "name": "portfolio-maxime-pontus",
+  "private": true,
+  "scripts": {
+    "start": "php -S 127.0.0.1:8000 -t public",
+    "dev": "php -S 127.0.0.1:8000 -t public",
+    "static": "serve legacy-static -l 3000"
+  },
+  "devDependencies": {
+    "serve": "^14.2.4"
+  }
+}

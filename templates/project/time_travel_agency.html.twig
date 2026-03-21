@@ -1,0 +1,171 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TimeTravel Agency — {{ site_name }}{% endblock %}
+
+{% block body %}
+    <div class="project-page">
+        <a class="skip-link" href="#contenu-principal">Aller au contenu</a>
+
+        <header class="site-header" id="top">
+            <div class="container header-inner">
+                <div class="brand">
+                    <a href="{{ path('app_home') }}#accueil" class="brand-link">{{ site_name }}</a>
+                    <p class="brand-tagline">
+                        M1 dev full stack · Ynov Campus · Alternance
+                    </p>
+                </div>
+                <button
+                    type="button"
+                    class="nav-toggle"
+                    aria-expanded="false"
+                    aria-controls="site-nav"
+                    aria-label="Ouvrir le menu"
+                >
+                    <span class="nav-toggle-bar"></span>
+                    <span class="nav-toggle-bar"></span>
+                </button>
+                <nav class="site-nav" id="site-nav" aria-label="Navigation principale">
+                    <ul class="nav-list">
+                        <li><a href="{{ path('app_home') }}#accueil">Accueil</a></li>
+                        <li><a href="{{ path('app_home') }}#projets">Projets</a></li>
+                        <li><a href="{{ path('app_home') }}#a-propos">À propos</a></li>
+                        <li><a href="{{ path('app_home') }}#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main id="contenu-principal" class="container section" style="padding-top: 2rem;">
+            <p class="project-breadcrumb">
+                <a href="{{ path('app_home') }}">Accueil</a>
+                · <a href="{{ path('app_home') }}#projets">Projets</a>
+                · TimeTravel Agency
+            </p>
+
+            <header class="project-detail-hero">
+                <div class="project-detail-hero-banner">
+                    <img
+                        src="https://placehold.co/1200x480/1e1033/e9d5ff?text=TimeTravel+Agency"
+                        alt="Visuel du projet TimeTravel Agency"
+                        width="1200"
+                        height="480"
+                        loading="eager"
+                    />
+                </div>
+                <p class="project-detail-tag project-detail-tag--course">Projet de cours · M1/M2 Digital &amp; IA</p>
+                <h1>TimeTravel Agency</h1>
+                <p class="project-detail-lead">
+                    Webapp fictive d’<strong>agence de voyages temporels</strong> de luxe : trois destinations
+                    (Paris 1889, Crétacé, Florence 1504), landing interactive, quiz de recommandation et
+                    chatbot propulsé par l’API Mistral.
+                </p>
+
+                <div class="project-detail-callout" role="note">
+                    <h2 class="project-detail-callout__title">Cadre pédagogique &amp; IA de A à Z</h2>
+                    <p>
+                        Ce dépôt correspond à un <strong>projet de cours</strong> (parcours M1/M2 Digital &amp; IA).
+                        La consigne imposait d’exploiter <strong>l’intelligence artificielle sur tout le cycle du projet</strong>
+                        : idéation, architecture, rédaction, intégration, assistance au code et assets générés.
+                    </p>
+                    <p>
+                        Concrètement : outils type <strong>Cursor + Claude</strong> pour le développement,
+                        <strong>Mistral</strong> pour le chatbot en production, et <strong>Midjourney / Runway</strong>
+                        pour les visuels et la vidéo hero — comme détaillé dans le README du dépôt.
+                    </p>
+                </div>
+
+                <p class="project-detail-actions">
+                    <a
+                        href="https://github.com/kruzeyy/TimeTravel-Agency"
+                        class="btn btn-primary"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >Voir le code sur GitHub</a>
+                    <a
+                        href="https://time-travel-agency-two.vercel.app"
+                        class="btn btn-ghost"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >Démo en ligne (Vercel)</a>
+                    <a href="{{ path('app_home') }}#projets" class="btn btn-ghost">← Retour aux projets</a>
+                </p>
+            </header>
+
+            <section class="project-detail-section" aria-labelledby="stack-title">
+                <h2 id="stack-title">Stack technique</h2>
+                <ul class="tech-chips">
+                    <li>React 18</li>
+                    <li>Vite</li>
+                    <li>Tailwind CSS</li>
+                    <li>Framer Motion</li>
+                    <li>Mistral AI (API)</li>
+                    <li>Vercel (déploiement)</li>
+                </ul>
+            </section>
+
+            <section class="project-detail-section" aria-labelledby="feat-title">
+                <h2 id="feat-title">Fonctionnalités</h2>
+                <ul>
+                    <li>Landing avec <strong>vidéo de fond</strong> (fallback dégradé si fichier absent).</li>
+                    <li>Galerie des trois destinations avec cartes animées (lazy loading, hover).</li>
+                    <li><strong>Chatbot IA</strong> (widget flottant) — réponses via Mistral, personnalité « assistant TimeTravel Agency ».</li>
+                    <li><strong>Quiz</strong> optionnel : quatre questions puis recommandation de destination avec explication.</li>
+                    <li>Animations au scroll et sur les CTA (Framer Motion).</li>
+                </ul>
+            </section>
+
+            <section class="project-detail-section" aria-labelledby="install-title">
+                <h2 id="install-title">Lancer en local</h2>
+                <p>Prérequis : Node.js 18+ et npm.</p>
+                <ol>
+                    <li>Cloner le dépôt puis <code>npm install</code>.</li>
+                    <li>Créer un <code>.env</code> à partir de <code>.env.example</code> avec <code>VITE_MISTRAL_API_KEY</code> pour activer le chatbot.</li>
+                    <li><code>npm run dev</code> — application sur <code>http://localhost:5173</code>.</li>
+                </ol>
+                <p>
+                    Build : <code>npm run build</code> puis <code>npm run preview</code>. Un guide de déploiement Vercel est fourni dans
+                    <code>DEPLOYMENT.md</code> du dépôt.
+                </p>
+            </section>
+
+            <section class="project-detail-section" aria-labelledby="structure-title">
+                <h2 id="structure-title">Structure (aperçu)</h2>
+                <div class="detail-code">
+                    <pre>time-travel-agency/
+├── index.html
+├── vite.config.js
+├── tailwind.config.js
+├── public/assets/     # images hero, vidéo
+└── src/
+    ├── App.jsx
+    └── components/    # Header, Hero, DestinationCard, Quiz, Chatbot, Footer…</pre>
+                </div>
+            </section>
+
+            <div class="project-detail-notes" role="note">
+                <strong>Licence &amp; usage</strong>
+                <p style="margin: 0.35rem 0 0;">
+                    Projet fourni dans un cadre pédagogique, « en l’état ». Les assets et APIs tierces restent soumises à leurs conditions respectives.
+                    Référence complète : README du dépôt
+                    <a href="https://github.com/kruzeyy/TimeTravel-Agency" target="_blank" rel="noopener noreferrer">kruzeyy/TimeTravel-Agency</a>.
+                </p>
+            </div>
+        </main>
+
+        <footer class="site-footer">
+            <div class="container footer-inner">
+                <p class="footer-copy">
+                    © {{ 'now'|date('Y') }} {{ site_name }}. Tous droits réservés.
+                </p>
+                <ul class="footer-social" aria-label="Réseaux sociaux">
+                    <li>
+                        <a href="{{ site_github }}" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
+                    </li>
+                    <li>
+                        <a href="{{ site_linkedin }}" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </footer>
+    </div>
+{% endblock %}

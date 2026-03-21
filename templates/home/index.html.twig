@@ -1,0 +1,202 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <a class="skip-link" href="#accueil">Aller au contenu</a>
+
+    <header class="site-header" id="top">
+        <div class="container header-inner">
+            <div class="brand">
+                <a href="#accueil" class="brand-link" data-scroll>{{ site_name }}</a>
+                <p class="brand-tagline">
+                    M1 dev full stack · Ynov Campus · Alternance
+                </p>
+            </div>
+            <button
+                type="button"
+                class="nav-toggle"
+                aria-expanded="false"
+                aria-controls="site-nav"
+                aria-label="Ouvrir le menu"
+            >
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+            </button>
+            <nav class="site-nav" id="site-nav" aria-label="Navigation principale">
+                <ul class="nav-list">
+                    <li><a href="#accueil" data-scroll>Accueil</a></li>
+                    <li><a href="#projets" data-scroll>Projets</a></li>
+                    <li><a href="#a-propos" data-scroll>À propos</a></li>
+                    <li><a href="#contact" data-scroll>Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero hero--media" id="accueil" aria-labelledby="hero-title">
+            {# Vidéo hero : Mixkit — « Software developer working on code, screen close up » (mixkit.co, usage gratuit) #}
+            <video
+                class="hero-video"
+                autoplay
+                muted
+                loop
+                playsinline
+                aria-hidden="true"
+            >
+                <source src="{{ asset('videos/hero-demo.mp4') }}" type="video/mp4" />
+            </video>
+            <div class="hero-overlay" aria-hidden="true"></div>
+            <div class="container hero-content">
+                <p class="hero-eyebrow">Portfolio</p>
+                <h1 id="hero-title" class="hero-title">
+                    Bonjour, je suis {{ site_name }}.
+                </h1>
+                <div class="hero-intro">
+                    <p class="hero-subtitle">
+                        J’ai <strong>21 ans</strong> et je suis en <strong>M1 dev full stack</strong> chez
+                        <strong>Ynov Campus</strong>, en <strong>alternance</strong>. Ce rythme me permet d’associer
+                        les apports du cursus à la réalité d’une équipe : monter en compétence sur tout le spectre
+                        du web, du front aux API et à la mise en production.
+                    </p>
+                    <p class="hero-subtitle">
+                        Curieux et rigoureux, j’aime comprendre un besoin, proposer une solution claire et la traduire
+                        en code maintenable — avec une attention particulière à l’expérience utilisateur. Sur ce site,
+                        tu trouveras un aperçu de mes réalisations : application iOS, projets React, jeu en navigateur
+                        et plateforme full stack, entre projets de cours et travaux personnels.
+                    </p>
+                </div>
+                <div class="hero-actions">
+                    <a href="#projets" class="btn btn-primary" data-scroll>Voir mes projets</a>
+                    <a href="#contact" class="btn btn-ghost" data-scroll>Me contacter</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section projects" id="projets" aria-labelledby="projets-title">
+            <div class="container">
+                <header class="section-header">
+                    <h2 id="projets-title" class="section-title">Projets</h2>
+                    <p class="section-lead">
+                        Applications mobile &amp; web, jeu en navigateur et plateforme d’alertes — dont <strong>deux projets de cours</strong> (TimeTravel Agency, Lyon Alerte 360) et des réalisations personnelles.
+                    </p>
+                </header>
+                <div class="project-grid">
+                    {% for project in projects %}
+                        <article class="project-card">
+                            <div class="project-image-wrap{% if project.image_fit is defined %} project-image-wrap--{{ project.image_fit }}{% endif %}">
+                                <img
+                                    src="{% if project.image starts with 'http' %}{{ project.image }}{% else %}{{ asset(project.image) }}{% endif %}"
+                                    alt="{{ project.image_alt|default('') }}"
+                                    width="800"
+                                    height="500"
+                                    loading="lazy"
+                                />
+                            </div>
+                            <div class="project-body">
+                                <h3 class="project-title">{{ project.title }}</h3>
+                                {% if project.badge is defined %}
+                                    <p class="project-badge {{ project.badge_class|default('') }}">{{ project.badge }}</p>
+                                {% endif %}
+                                <p class="project-meta">{{ project.meta }}</p>
+                                <a href="{{ project.url }}" class="btn btn-small btn-primary">Voir le projet</a>
+                            </div>
+                        </article>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+
+        <section class="section about" id="a-propos" aria-labelledby="about-title">
+            <div class="container about-grid">
+                <div class="about-visual">
+                    <div class="about-frame">
+                        <img
+                            class="about-photo"
+                            src="{{ asset('images/maxime-pontus.png') }}"
+                            alt="Portrait de {{ site_name }}"
+                            width="673"
+                            height="673"
+                            loading="lazy"
+                        />
+                    </div>
+                </div>
+                <div class="about-copy">
+                    <header class="section-header section-header--left">
+                        <h2 id="about-title" class="section-title">À propos</h2>
+                    </header>
+                    <p class="about-text">
+                        J’ai 21 ans et je poursuis un <strong>M1 développement full stack</strong> à Ynov Campus en
+                        alternance. Autodidacte curieux avant de structurer mon parcours en école, je construis
+                        aujourd’hui des sites et des applications en accord avec les bonnes pratiques : UX soignée,
+                        code lisible et envie constante d’apprendre. Ce qui me motive, c’est de faire passer une idée
+                        du cahier des charges à un produit concret, fiable et agréable à utiliser.
+                    </p>
+                    <h3 class="skills-heading">Compétences clés</h3>
+                    <ul class="skill-tags" aria-label="Technologies et domaines">
+                        {% for skill in skills %}
+                            <li>
+                                <i class="{{ skill.icon }}" aria-hidden="true"></i> {{ skill.label }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section contact" id="contact" aria-labelledby="contact-title">
+            <div class="container contact-layout">
+                <header class="section-header section-header--left">
+                    <h2 id="contact-title" class="section-title">Contact</h2>
+                    <p class="section-lead contact-encouragement">
+                        Un projet, une question ou une simple prise de contact ? Écrivez-moi :
+                        j’essaie de répondre sous quelques jours ouvrés.
+                    </p>
+                </header>
+
+                {% for message in app.flashes('success') %}
+                    <div class="flash flash--success" role="status">{{ message }}</div>
+                {% endfor %}
+
+                <div class="contact-grid">
+                    <div class="contact-form-wrap">
+                        {{ form_start(contact_form) }}
+                        {{ form_row(contact_form.name) }}
+                        {{ form_row(contact_form.email) }}
+                        {{ form_row(contact_form.message) }}
+                        {{ form_row(contact_form.submit) }}
+                        {{ form_end(contact_form) }}
+                    </div>
+                    <aside class="contact-aside" aria-label="Coordonnées">
+                        <h3 class="contact-aside-title">Coordonnées</h3>
+                        <ul class="contact-list">
+                            <li>
+                                <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+                                <a href="mailto:{{ site_email }}">{{ site_email }}</a>
+                            </li>
+                            <li>
+                                <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+                                <a href="{{ site_linkedin }}" target="_blank" rel="noopener noreferrer">Profil LinkedIn</a>
+                            </li>
+                        </ul>
+                    </aside>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p class="footer-copy">
+                © {{ 'now'|date('Y') }} {{ site_name }}. Tous droits réservés.
+            </p>
+            <ul class="footer-social" aria-label="Réseaux sociaux">
+                <li>
+                    <a href="{{ site_github }}" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
+                </li>
+                <li>
+                    <a href="{{ site_linkedin }}" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+{% endblock %}

@@ -1,0 +1,96 @@
+<?php
+
+namespace App\Controller;
+
+use App\Form\ContactFormType;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Attribute\Route;
+
+class HomeController extends AbstractController
+{
+    #[Route('/', name: 'app_home', methods: ['GET', 'POST'])]
+    public function __invoke(Request $request): Response
+    {
+        $form = $this->createForm(ContactFormType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->addFlash(
+                'success',
+                'Merci ! Votre message a bien été pris en compte (démo Symfony — branchez un mailer pour un envoi réel).'
+            );
+
+            return $this->redirect($this->generateUrl('app_home').'#contact');
+        }
+
+        return $this->render('home/index.html.twig', [
+            'contact_form' => $form,
+            'projects' => $this->projects(),
+            'skills' => $this->skills(),
+        ]);
+    }
+
+    /**
+     * @return list<array{title: string, meta: string, image: string, url: string, badge?: string, badge_class?: string, image_fit?: string, image_alt?: string}>
+     */
+    private function projects(): array
+    {
+        return [
+            [
+                'title' => 'MyHealthDay',
+                'badge' => 'Application iOS',
+                'meta' => 'SwiftUI, HealthKit, Combine · Tâches quotidiennes, suivi santé (pas, poids, graphiques) et recettes minceur avec filtres.',
+                'image' => 'images/myhealthday-icon.png',
+                'image_alt' => 'Logo MyHealthDay — application iOS',
+                'image_fit' => 'contain',
+                'url' => $this->generateUrl('app_project_myhealthday'),
+            ],
+            [
+                'title' => 'TimeTravel Agency',
+                'badge' => 'Projet de cours (M1/M2)',
+                'badge_class' => 'project-badge--course',
+                'meta' => 'React, Vite, Tailwind, Framer Motion, API Mistral · Webapp « agence de voyages dans le temps » : landing, destinations, quiz, chatbot. Contrainte du module : utiliser l’IA de A à Z (conception, code, contenus).',
+                'image' => 'https://placehold.co/800x500/1e1033/e9d5ff?text=TimeTravel+Agency',
+                'url' => $this->generateUrl('app_project_timetravel'),
+            ],
+            [
+                'title' => 'Football Manager Lite',
+                'badge' => 'Projet perso',
+                'badge_class' => 'project-badge--personal',
+                'meta' => 'React, TypeScript, Vite · Mini jeu de management football : ligue à 12 équipes, calendrier aller-retour, moteur de match simplifié, vues tableau de bord / effectif / calendrier / jour de match, sauvegarde localStorage.',
+                'image' => 'https://placehold.co/800x500/14532d/bef264?text=FM+Lite',
+                'url' => $this->generateUrl('app_project_football_lite'),
+            ],
+            [
+                'title' => 'Lyon Alerte 360',
+                'badge' => 'Projet de cours · Full-stack',
+                'badge_class' => 'project-badge--course',
+                'meta' => 'Réalisé en formation. React, Tailwind, Node.js, Express · Alertes et infos pour Lyon : notifications temps réel (météo, séismes, crues), carte, activités & événements, chat global.',
+                'image' => 'https://placehold.co/800x500/9a3412/ffedd5?text=Lyon+Alerte+360',
+                'url' => $this->generateUrl('app_project_lyon_alerte'),
+            ],
+        ];
+    }
+
+    /**
+     * @return list<array{icon: string, label: string}>
+     */
+    private function skills(): array
+    {
+        return [
+            ['icon' => 'fa-brands fa-html5', 'label' => 'HTML'],
+            ['icon' => 'fa-brands fa-css3-alt', 'label' => 'CSS'],
+            ['icon' => 'fa-brands fa-js', 'label' => 'JavaScript'],
+            ['icon' => 'fa-solid fa-code', 'label' => 'TypeScript'],
+            ['icon' => 'fa-brands fa-react', 'label' => 'React'],
+            ['icon' => 'fa-brands fa-node-js', 'label' => 'Node.js'],
+            ['icon' => 'fa-brands fa-php', 'label' => 'PHP'],
+            ['icon' => 'fa-brands fa-symfony', 'label' => 'Symfony'],
+            ['icon' => 'fa-brands fa-swift', 'label' => 'Swift / SwiftUI'],
+            ['icon' => 'fa-solid fa-database', 'label' => 'Bases de données'],
+            ['icon' => 'fa-solid fa-pen-ruler', 'label' => 'UI / UX'],
+        ];
+    }
+}

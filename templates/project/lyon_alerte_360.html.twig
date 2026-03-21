@@ -1,0 +1,163 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Lyon Alerte 360 — {{ site_name }}{% endblock %}
+
+{% block body %}
+    <div class="project-page">
+        <a class="skip-link" href="#contenu-principal">Aller au contenu</a>
+
+        <header class="site-header" id="top">
+            <div class="container header-inner">
+                <div class="brand">
+                    <a href="{{ path('app_home') }}#accueil" class="brand-link">{{ site_name }}</a>
+                    <p class="brand-tagline">
+                        M1 dev full stack · Ynov Campus · Alternance
+                    </p>
+                </div>
+                <button
+                    type="button"
+                    class="nav-toggle"
+                    aria-expanded="false"
+                    aria-controls="site-nav"
+                    aria-label="Ouvrir le menu"
+                >
+                    <span class="nav-toggle-bar"></span>
+                    <span class="nav-toggle-bar"></span>
+                </button>
+                <nav class="site-nav" id="site-nav" aria-label="Navigation principale">
+                    <ul class="nav-list">
+                        <li><a href="{{ path('app_home') }}#accueil">Accueil</a></li>
+                        <li><a href="{{ path('app_home') }}#projets">Projets</a></li>
+                        <li><a href="{{ path('app_home') }}#a-propos">À propos</a></li>
+                        <li><a href="{{ path('app_home') }}#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main id="contenu-principal" class="container section" style="padding-top: 2rem;">
+            <p class="project-breadcrumb">
+                <a href="{{ path('app_home') }}">Accueil</a>
+                · <a href="{{ path('app_home') }}#projets">Projets</a>
+                · Lyon Alerte 360
+            </p>
+
+            <header class="project-detail-hero">
+                <div class="project-detail-hero-banner">
+                    <img
+                        src="https://placehold.co/1200x480/9a3412/ffedd5?text=Lyon+Alerte+360"
+                        alt="Visuel du projet Lyon Alerte 360"
+                        width="1200"
+                        height="480"
+                        loading="eager"
+                    />
+                </div>
+                <p class="project-detail-tag project-detail-tag--course">Projet de cours · Full-stack · Lyon</p>
+                <h1>Lyon Alerte 360</h1>
+                <p class="project-detail-lead">
+                    Application web centrée sur <strong>Lyon</strong> : diffusion d’<strong>alertes et de notifications en temps réel</strong>
+                    autour d’événements et incidents locaux — dont des informations liées aux conditions météo
+                    (alertes sismiques, risques d’inondation, etc., selon les données branchées).
+                </p>
+
+                <div class="project-detail-callout" role="note">
+                    <h2 class="project-detail-callout__title">Cadre pédagogique</h2>
+                    <p>
+                        <strong>Lyon Alerte 360</strong> est un <strong>projet de cours</strong> : mise en pratique d’une architecture
+                        <strong>full-stack</strong> (interface <strong>React</strong> / <strong>Tailwind</strong> et API <strong>Node.js</strong> /
+                        <strong>Express</strong>) sur un sujet concret (alertes et information citoyenne).
+                    </p>
+                </div>
+
+                <p class="project-detail-actions">
+                    <a
+                        href="https://github.com/kruzeyy/LyonAlerte360"
+                        class="btn btn-primary"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >Code sur GitHub</a>
+                    <a href="{{ path('app_home') }}#projets" class="btn btn-ghost">← Retour aux projets</a>
+                </p>
+            </header>
+
+            <section class="project-detail-section" aria-labelledby="feat-la-title">
+                <h2 id="feat-la-title">Fonctionnalités (aperçu)</h2>
+                <ul>
+                    <li>Alertes et notifications <strong>temps réel</strong></li>
+                    <li>Interface pensée pour être <strong>simple à parcourir</strong></li>
+                    <li><strong>Activités &amp; événements</strong></li>
+                    <li>Intégration d’une <strong>carte</strong></li>
+                    <li><strong>Chat global</strong></li>
+                </ul>
+            </section>
+
+            <section class="project-detail-section" aria-labelledby="stack-la-title">
+                <h2 id="stack-la-title">Stack</h2>
+                <div class="table-scroll" tabindex="0" aria-label="Tableau front-end et backend">
+                    <table class="project-detail-table" role="presentation">
+                        <thead>
+                            <tr>
+                                <th scope="col">Front-end</th>
+                                <th scope="col">Backend</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>React, Tailwind</td>
+                                <td>Node.js, Express</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p style="margin-top: 1rem; font-size: 0.9375rem; color: var(--color-text-muted);">
+                    Le dépôt organise le code en dossiers <code>Front-end</code>, <code>backend</code>, ainsi que <code>Code_Data</code> et <code>src</code> selon l’évolution du projet — voir l’arborescence sur GitHub.
+                </p>
+            </section>
+
+            <section class="project-detail-section" aria-labelledby="run-la-title">
+                <h2 id="run-la-title">Lancer en local</h2>
+                <ol>
+                    <li>Cloner le dépôt :
+                        <div class="detail-code"><pre>git clone https://github.com/kruzeyy/LyonAlerte360.git
+cd LyonAlerte360</pre></div>
+                    </li>
+                    <li>Front-end — depuis <code>Front-end</code> :
+                        <div class="detail-code"><pre>cd Front-end
+npm install
+npm run dev</pre></div>
+                    </li>
+                    <li>Backend — depuis <code>backend</code> :
+                        <div class="detail-code"><pre>cd ../backend
+npm install
+npm run dev</pre></div>
+                    </li>
+                </ol>
+                <p>Les deux parties tournent en parallèle (client + API), comme décrit dans le README du dépôt.</p>
+            </section>
+
+            <div class="project-detail-notes" role="note">
+                <strong>Référence</strong>
+                <p style="margin: 0.35rem 0 0;">
+                    Documentation et détails à jour :
+                    <a href="https://github.com/kruzeyy/LyonAlerte360" target="_blank" rel="noopener noreferrer">github.com/kruzeyy/LyonAlerte360</a>.
+                </p>
+            </div>
+        </main>
+
+        <footer class="site-footer">
+            <div class="container footer-inner">
+                <p class="footer-copy">
+                    © {{ 'now'|date('Y') }} {{ site_name }}. Tous droits réservés.
+                </p>
+                <ul class="footer-social" aria-label="Réseaux sociaux">
+                    <li>
+                        <a href="{{ site_github }}" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
+                    </li>
+                    <li>
+                        <a href="{{ site_linkedin }}" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </footer>
+    </div>
+{% endblock %}

@@ -1,0 +1,7 @@
+twig:
+    file_name_pattern: '*.twig'
+    globals:
+        site_name: 'Maxime Pontus'
+        site_email: 'pontus.maxime@yahoo.com'
+        site_linkedin: 'https://www.linkedin.com/in/maxime-pontus-99887b1b3/'
+        site_github: 'https://github.com/kruzeyy'
