@@ -19,6 +19,9 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
+        <script>
+            document.documentElement.classList.add('js');
+        </script>
         {% block body %}{% endblock %}
         <script src="{{ asset('js/main.js') }}" defer></script>
         {% block javascripts %}{% endblock %}
