@@ -7,7 +7,6 @@ twig:
         site_github: 'https://github.com/kruzeyy'
         # Activité freelance — à personnaliser
         business_region: 'Lyon et Auvergne-Rhône-Alpes'
-        business_statut: 'Auto-entrepreneur'
-        # Mentions légales (obligatoire : compléter quand tu les as)
-        legal_siret: ''
-        legal_address: ''
+        business_statut: 'Entrepreneur Individuel (EI)'
+        legal_siret: '102 432 408 00015'
+        legal_address: 'Villeurbanne, France'

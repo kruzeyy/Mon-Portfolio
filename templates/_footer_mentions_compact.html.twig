@@ -1,0 +1,12 @@
+<div class="footer-legal-compact">
+    <p class="footer-legal-compact__title">Mentions légales</p>
+    <div class="footer-legal-compact__body">
+        <p>Nom : {{ site_name }} - {{ business_statut }}</p>
+        {% if legal_siret %}<p>SIRET : {{ legal_siret }}</p>{% endif %}
+        {% if legal_address %}<p>Siège social : {{ legal_address }}</p>{% endif %}
+        <p>Hébergeur : <a href="https://render.com" target="_blank" rel="noopener noreferrer">Render.com</a></p>
+    </div>
+    <p class="footer-legal-compact__more">
+        <a href="{{ path('app_mentions_legales') }}">Mentions légales complètes</a>
+    </p>
+</div>

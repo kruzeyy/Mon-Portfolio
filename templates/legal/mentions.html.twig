@@ -27,9 +27,7 @@
 
             <section class="legal-block" aria-labelledby="legal-editeur">
                 <h2 id="legal-editeur">Éditeur du site</h2>
-                <p>
-                    <strong>{{ site_name }}</strong> — {{ business_statut }}.
-                </p>
+                <p>Nom : {{ site_name }} - {{ business_statut }}</p>
                 {% if legal_siret %}
                     <p>SIRET : {{ legal_siret }}</p>
                 {% else %}
@@ -39,7 +37,7 @@
                     </p>
                 {% endif %}
                 {% if legal_address %}
-                    <p>Adresse : {{ legal_address }}</p>
+                    <p>Siège social : {{ legal_address }}</p>
                 {% endif %}
                 <p>
                     Contact : <a href="mailto:{{ site_email }}">{{ site_email }}</a>
@@ -49,7 +47,8 @@
             <section class="legal-block" aria-labelledby="legal-hebergement">
                 <h2 id="legal-hebergement">Hébergement</h2>
                 <p>
-                    Ce site est hébergé par <strong>Render, Inc.</strong> (États-Unis). Informations détaillées :
+                    Hébergeur : <strong><a href="https://render.com" rel="noopener noreferrer">Render.com</a></strong>.
+                    Informations détaillées :
                     <a href="https://render.com/legal/privacy" rel="noopener noreferrer">Politique de confidentialité Render</a>.
                 </p>
             </section>

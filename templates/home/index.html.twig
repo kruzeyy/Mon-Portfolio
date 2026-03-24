@@ -304,11 +304,9 @@
         <div class="container footer-inner">
             <div class="footer-meta">
                 <p class="footer-copy">
-                    © {{ 'now'|date('Y') }} {{ site_name }} — {{ business_statut }}.
+                    © {{ 'now'|date('Y') }} {{ site_name }}.
                 </p>
-                <p class="footer-legal-links">
-                    <a href="{{ path('app_mentions_legales') }}">Mentions légales</a>
-                </p>
+                {% include '_footer_mentions_compact.html.twig' %}
             </div>
             <ul class="footer-social" aria-label="Réseaux sociaux">
                 <li>
