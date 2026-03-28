@@ -29,6 +29,7 @@
             <nav class="site-nav" id="site-nav" aria-label="Navigation principale">
                 <ul class="nav-list">
                     <li><a href="#accueil" data-scroll>Accueil</a></li>
+                    <li><a href="#pourquoi-site" data-scroll>Pourquoi un site</a></li>
                     <li><a href="#prestations" data-scroll>Services</a></li>
                     <li><a href="#demarche" data-scroll>Démarche</a></li>
                     <li><a href="#projets" data-scroll>Réalisations</a></li>
@@ -89,6 +90,36 @@
                         </div>
                     </div>
                 {% endfor %}
+            </div>
+        </section>
+
+        <section class="section section-why-artisan" id="pourquoi-site" aria-labelledby="why-artisan-title">
+            <div class="container">
+                <header class="section-header section-header--why reveal">
+                    <h2 id="why-artisan-title" class="section-title section-title--why">
+                        Pourquoi votre activité d’artisan a besoin d’un site en 2026&nbsp;?
+                    </h2>
+                </header>
+
+                <div class="why-highlight reveal">
+                    <p class="why-highlight-text">{{ why_artisan.intro }}</p>
+                </div>
+
+                <div class="why-grid reveal-group">
+                    {% for item in why_artisan.points %}
+                        <article class="why-card">
+                            <div class="why-card-icon" aria-hidden="true">
+                                <i class="{{ item.icon }}"></i>
+                            </div>
+                            <h3 class="why-card-title">{{ item.title }}</h3>
+                            <p class="why-card-text">{{ item.text }}</p>
+                        </article>
+                    {% endfor %}
+                </div>
+
+                <div class="why-cta reveal">
+                    <a href="#contact" class="btn btn-why-contact" data-scroll>Me contacter</a>
+                </div>
             </div>
         </section>
 
