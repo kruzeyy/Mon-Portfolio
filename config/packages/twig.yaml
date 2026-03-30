@@ -5,6 +5,8 @@ twig:
         site_email: 'pontus.maxime@yahoo.com'
         site_linkedin: 'https://www.linkedin.com/in/maxime-pontus-99887b1b3/'
         site_github: 'https://github.com/kruzeyy'
+        # Image partage social (Open Graph) — idéalement 1200×630 px ; à placer dans public/
+        site_og_image: 'images/maxime-pontus.png'
         # Activité freelance — à personnaliser
         business_region: 'Lyon et Auvergne-Rhône-Alpes'
         business_statut: 'Entrepreneur Individuel (EI)'

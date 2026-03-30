@@ -69,6 +69,7 @@ class HomeController extends AbstractController
             'process_steps' => $this->processSteps(),
             'faqs' => $this->faqs(),
             'trust_points' => $this->trustPoints(),
+            'why_artisan' => $this->whyArtisanWeb(),
             'client_skills' => $this->clientSkills(),
         ]);
     }
@@ -245,6 +246,33 @@ class HomeController extends AbstractController
                 'icon' => 'fa-solid fa-handshake',
                 'title' => 'Relation directe',
                 'text' => 'Un interlocuteur unique — pas d’agence opaque ni de sous-traitance cachée.',
+            ],
+        ];
+    }
+
+    /**
+     * @return array{intro: string, points: list<array{icon: string, title: string, text: string}>}
+     */
+    private function whyArtisanWeb(): array
+    {
+        return [
+            'intro' => 'Accompagnement de A à Z : de la réservation de votre nom de domaine à la mise en ligne, je m’occupe de toute la partie technique.',
+            'points' => [
+                [
+                    'icon' => 'fa-solid fa-fingerprint',
+                    'title' => 'Indépendance numérique',
+                    'text' => 'Ne dépendez plus uniquement du bouche-à-oreille ou des plateformes tierces. Soyez propriétaire de votre image.',
+                ],
+                [
+                    'icon' => 'fa-solid fa-images',
+                    'title' => 'Preuve de qualité',
+                    'text' => 'Centralisez vos plus belles réalisations et vos avis clients pour rassurer vos futurs chantiers instantanément.',
+                ],
+                [
+                    'icon' => 'fa-solid fa-map-location-dot',
+                    'title' => 'Visibilité locale 24h/7',
+                    'text' => 'Permettez aux clients de votre secteur de vous trouver sur Google, même quand vous n’êtes pas joignable.',
+                ],
             ],
         ];
     }

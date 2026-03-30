@@ -1,7 +1,14 @@
 {% extends 'base.html.twig' %}
 
+<<<<<<< HEAD
 {% block title %}Maxime Pontus | Développeur Web Villeurbanne{% endblock %}
 {% block meta_description %}Développeur web à Villeurbanne. Création de sites internet modernes et performants pour artisans et PME. Contactez Maxime Pontus.{% endblock %}
+=======
+{% block title %}Maxime Pontus | Création de Sites Web pour Artisans &amp; TPE à Lyon{% endblock %}
+{% block meta_description %}Boostez votre activité d'artisan avec un site vitrine clé en main à 900€. Optimisation SEO locale, Google Maps et design pro pour électriciens, plombiers et maçons.{% endblock %}
+{% block og_title %}Maxime Pontus | Création de Sites Web pour Artisans &amp; TPE à Lyon{% endblock %}
+{% block og_description %}Boostez votre activité d'artisan avec un site vitrine clé en main à 900€. Optimisation SEO locale, Google Maps et design pro pour électriciens, plombiers et maçons.{% endblock %}
+>>>>>>> bcc5383edfd13b7bec89f42ae0f995c2a0181188
 
 {% block body %}
     <a class="skip-link" href="#accueil">Aller au contenu</a>
@@ -27,6 +34,7 @@
             <nav class="site-nav" id="site-nav" aria-label="Navigation principale">
                 <ul class="nav-list">
                     <li><a href="#accueil" data-scroll>Accueil</a></li>
+                    <li><a href="#pourquoi-site" data-scroll>Pourquoi un site</a></li>
                     <li><a href="#prestations" data-scroll>Services</a></li>
                     <li><a href="#demarche" data-scroll>Démarche</a></li>
                     <li><a href="#projets" data-scroll>Réalisations</a></li>
@@ -87,6 +95,36 @@
                         </div>
                     </div>
                 {% endfor %}
+            </div>
+        </section>
+
+        <section class="section section-why-artisan" id="pourquoi-site" aria-labelledby="why-artisan-title">
+            <div class="container">
+                <header class="section-header section-header--why reveal">
+                    <h2 id="why-artisan-title" class="section-title section-title--why">
+                        Pourquoi votre activité d’artisan a besoin d’un site en 2026&nbsp;?
+                    </h2>
+                </header>
+
+                <div class="why-highlight reveal">
+                    <p class="why-highlight-text">{{ why_artisan.intro }}</p>
+                </div>
+
+                <div class="why-grid reveal-group">
+                    {% for item in why_artisan.points %}
+                        <article class="why-card">
+                            <div class="why-card-icon" aria-hidden="true">
+                                <i class="{{ item.icon }}"></i>
+                            </div>
+                            <h3 class="why-card-title">{{ item.title }}</h3>
+                            <p class="why-card-text">{{ item.text }}</p>
+                        </article>
+                    {% endfor %}
+                </div>
+
+                <div class="why-cta reveal">
+                    <a href="#contact" class="btn btn-why-contact" data-scroll>Me contacter</a>
+                </div>
             </div>
         </section>
 
