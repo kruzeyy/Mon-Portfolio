@@ -1,6 +1,7 @@
 node_modules/
 /vendor/
 /var/
+composer.phar
 .php-version
 .phpunit.result.cache
 .env.local

@@ -1,0 +1,288 @@
+/* —— Page projet (détail) —— */
+.project-page main {
+  padding-bottom: 3rem;
+}
+
+.project-breadcrumb {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  margin: 0 0 1.5rem;
+}
+
+.project-breadcrumb a {
+  color: var(--color-text-muted);
+}
+
+.project-breadcrumb a:hover {
+  color: var(--color-accent);
+}
+
+.project-detail-hero {
+  margin-bottom: 3rem;
+}
+
+.project-detail-hero-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: min(320px, 42vw);
+  padding: clamp(2rem, 6vw, 3.5rem);
+  background: radial-gradient(ellipse 80% 90% at 50% 100%, #1e293b 0%, #0a0f18 50%);
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-soft);
+}
+
+.project-detail-hero-visual img {
+  width: auto;
+  height: auto;
+  max-width: min(240px, 42vw);
+  border-radius: 22%;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+}
+
+.project-detail-hero h1 {
+  margin: 1.25rem 0 0.5rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 4vw, 2.35rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.project-detail-tag {
+  display: inline-block;
+  margin: 0;
+  padding: 0.25rem 0.65rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #0f766e;
+  background: rgba(15, 118, 110, 0.1);
+  border-radius: 980px;
+}
+
+.project-detail-tag--course   { color: #6d28d9; background: rgba(124, 58, 237, 0.12); }
+.project-detail-tag--personal { color: #15803d; background: rgba(21, 128, 61, 0.12); }
+.project-detail-tag--alert    { color: #c2410c; background: rgba(194, 65, 12, 0.1); }
+
+.project-detail-hero-banner {
+  margin: 0 0 1.25rem;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-soft);
+}
+
+.project-detail-hero-banner img {
+  display: block;
+  width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+.project-detail-callout {
+  margin: 1.75rem 0 0;
+  padding: 1.35rem 1.5rem;
+  background: linear-gradient(
+    135deg,
+    rgba(124, 58, 237, 0.08) 0%,
+    rgba(30, 16, 51, 0.06) 100%
+  );
+  border: 1px solid rgba(124, 58, 237, 0.25);
+  border-radius: var(--radius);
+  border-left: 4px solid #7c3aed;
+}
+
+.project-detail-callout__title {
+  margin: 0 0 0.75rem;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+}
+
+.project-detail-callout p {
+  margin: 0 0 0.85rem;
+  font-size: 0.9375rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+.project-detail-callout p:last-child {
+  margin-bottom: 0;
+}
+
+.project-detail-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.project-detail-table {
+  width: 100%;
+  max-width: 28rem;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+}
+
+.project-detail-table th,
+.project-detail-table td {
+  padding: 0.65rem 1rem;
+  text-align: left;
+  border: 1px solid var(--color-border);
+}
+
+.project-detail-table th {
+  background: var(--color-bg-subtle);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.project-detail-table td {
+  color: var(--color-text-muted);
+}
+
+.project-detail-lead {
+  margin: 0;
+  max-width: 40rem;
+  font-size: 1.0625rem;
+  color: var(--color-text-muted);
+  line-height: 1.65;
+}
+
+.project-detail-section {
+  margin-top: 3rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.project-detail-section h2 {
+  margin: 0 0 1.25rem;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.project-detail-section h3 {
+  margin: 1.5rem 0 0.65rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.project-detail-section p,
+.project-detail-section li {
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+.project-detail-section ul,
+.project-detail-section ol {
+  margin: 0 0 1rem;
+  padding-left: 1.25rem;
+}
+
+.project-detail-section li + li {
+  margin-top: 0.35rem;
+}
+
+.project-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.project-feature-card {
+  padding: 1.35rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+}
+
+.project-feature-card h3 {
+  margin: 0 0 0.75rem;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.project-feature-card h3 .emoji {
+  font-style: normal;
+}
+
+.project-feature-card ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  font-size: 0.9375rem;
+}
+
+.detail-code {
+  margin: 1rem 0 0;
+  padding: 1rem 1.15rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  background: #0f172a;
+  color: #e2e8f0;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.detail-code pre {
+  margin: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  white-space: pre;
+}
+
+.tech-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0.75rem 0 0;
+  padding: 0;
+}
+
+.tech-chips li {
+  padding: 0.35rem 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  background: var(--color-bg-subtle);
+  border: 1px solid var(--color-border);
+  border-radius: 980px;
+  color: var(--color-text);
+}
+
+.project-detail-notes {
+  margin-top: 2rem;
+  padding: 1.25rem 1.35rem;
+  background: rgba(37, 99, 235, 0.06);
+  border: 1px solid rgba(37, 99, 235, 0.15);
+  border-radius: var(--radius);
+  font-size: 0.9375rem;
+  color: var(--color-text-muted);
+}
+
+.project-detail-notes ul {
+  margin: 0.5rem 0 0;
+}
+
+/* —— Tableaux défilants (mobile) —— */
+.table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 0.75rem 0 0;
+  max-width: 100%;
+}
+
+.table-scroll .project-detail-table {
+  margin-top: 0;
+}

@@ -1,0 +1,116 @@
+/* —— Buttons —— */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 1.35rem;
+  font-family: inherit;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  border-radius: 980px;
+  border: none;
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition),
+    transform var(--transition), box-shadow var(--transition);
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--color-accent) 0%, #4f46e5 100%);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.35);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--color-accent-hover) 0%, #4338ca 100%);
+  color: #fff;
+  box-shadow: 0 6px 22px rgba(37, 99, 235, 0.42);
+}
+
+.btn-ghost {
+  background: rgba(255, 255, 255, 0.65);
+  color: var(--color-accent);
+  box-shadow: inset 0 0 0 1px var(--color-border);
+}
+
+.btn-ghost:hover {
+  background: var(--color-surface);
+  color: var(--color-accent-hover);
+}
+
+.btn-small {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+}
+
+/* —— Section primitives —— */
+.section {
+  padding-block: 5.5rem;
+  scroll-margin-top: calc(var(--header-h) + 0.5rem);
+}
+
+.section--tight {
+  padding-block: 2.5rem;
+}
+
+.section--alt {
+  background: var(--color-bg-subtle);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-header--left {
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
+.section-title {
+  margin: 0 0 0.75rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.85rem, 3vw, 2.35rem);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+.section-lead {
+  margin: 0 auto;
+  max-width: 32rem;
+  color: var(--color-text-muted);
+  font-size: 1rem;
+}
+
+.section-lead--wide {
+  max-width: 40rem;
+}
+
+.container--narrow {
+  width: min(720px, 100% - 3rem);
+}
+
+/* —— Flash messages —— */
+.flash {
+  margin-bottom: 1.5rem;
+  padding: 1rem 1.15rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  border: 1px solid transparent;
+}
+
+.flash--success {
+  background: rgba(34, 197, 94, 0.1);
+  border-color: rgba(34, 197, 94, 0.35);
+  color: #166534;
+}
+
+.flash--error {
+  background: rgba(239, 68, 68, 0.1);
+  border-color: rgba(239, 68, 68, 0.35);
+  color: #991b1b;
+}
